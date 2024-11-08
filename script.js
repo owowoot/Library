@@ -1,4 +1,8 @@
-const myLibrary = ["Billy Summers"];
+const myLibrary = [
+    { title: "Billy Summers", author: "Stephen King" },
+    { title: "It", author: "Stephen King" },
+    { title: "Atomic Habits", author: "James Clear" }
+];
 
 class Book {
     constructor(title, author) {
@@ -15,8 +19,12 @@ function addBookToLibrary(book) {
 
 }
 const body = document.body;
+const bookContainer = document.createElement('div');
+bookContainer.classList.add('book-container')
+document.body.append(bookContainer)
 
 function displayBooks(library) {
+
     myLibrary.forEach((book, index) => { // loop through the library
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card');
@@ -29,9 +37,10 @@ function displayBooks(library) {
         author.textContent = `By ${book.author}`
         bookCard.append(author);
 
+        bookContainer.append(bookCard);
     });
 }
 
 // Display Books test
-console.log(displayBooks(myLibrary))
+displayBooks(myLibrary)
 
